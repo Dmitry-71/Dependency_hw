@@ -1,9 +1,9 @@
 package org.example.controller;
 
-
 import com.google.gson.Gson;
 import org.example.model.Post;
 import org.example.service.PostService;
+import org.springframework.stereotype.Controller;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -28,7 +28,7 @@ public class PostController {
         response.setContentType(APPLICATION_JSON);
         final var data = service.getById(id);
         final var gson = new Gson();
-        if (data == null) {
+        if (data == null) { //todo разобраться
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
         }
         response.getWriter().print(gson.toJson(data));
